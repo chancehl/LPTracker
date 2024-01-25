@@ -21,7 +21,7 @@ public class RiotClient implements Serializable {
         this.apiKey = apiKey;
     }
 
-    public List<SummonerLeagueStats> getSummonerLeagueStats(String summonerId) throws IOException, InterruptedException {
+    public List<SummonerLeagueStats> getSummonerLeagueStats(String summonerId) throws IOException, RuntimeException, InterruptedException {
         HttpClient httpClient = HttpClient.newBuilder().build();
 
         HttpRequest httpRequest = HttpRequest.newBuilder()
@@ -31,6 +31,12 @@ public class RiotClient implements Serializable {
                 .build();
 
         HttpResponse<String> response = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
+
+        int statusCode = response.statusCode();
+
+        if (statusCode != 200) {
+            throw new RuntimeException("Could not communicate with Riot API. Please check your API key.");
+        }
 
         return this.mapper.readValue(response.body(), new TypeReference<List<SummonerLeagueStats>>(){});
     }
