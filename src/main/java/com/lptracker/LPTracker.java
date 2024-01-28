@@ -5,7 +5,6 @@ import com.lptracker.db.clients.DbClient;
 import com.lptracker.models.PersistedLeagueStats;
 import com.lptracker.models.SummonerLeagueStats;
 import com.lptracker.utils.StatCompare;
-import com.mongodb.MongoException;
 import io.github.cdimascio.dotenv.Dotenv;
 
 import java.io.IOException;
