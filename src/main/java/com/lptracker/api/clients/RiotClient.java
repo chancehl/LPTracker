@@ -34,7 +34,7 @@ public class RiotClient implements Serializable {
 
         int statusCode = response.statusCode();
 
-        if (statusCode != 200) {
+        if (statusCode == 403) {
             throw new RuntimeException("Could not communicate with Riot API. Please check your API key.");
         }
 
