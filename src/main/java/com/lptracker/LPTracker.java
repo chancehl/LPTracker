@@ -53,7 +53,7 @@ public class LPTracker {
 
             // Save the new stats as the latest
             dbClient.saveSummonerStats(summonerId, leagueStats);
-        } catch (IOException | InterruptedException | MongoException e) {
+        } catch (IOException | InterruptedException | RuntimeException e) {
             System.out.println(e.getMessage());
 
             throw new RuntimeException(e);
