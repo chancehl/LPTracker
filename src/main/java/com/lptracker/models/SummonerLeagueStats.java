@@ -1,5 +1,8 @@
 package com.lptracker.models;
 
+import lombok.Builder;
+
+@Builder
 public class SummonerLeagueStats {
     public String leagueId;
     public String summonerId;
